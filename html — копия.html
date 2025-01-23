@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles.css">
+	<title></title>
+</head>
+<body>
+    <script type="module">
+      let mapping = [
+        [ 'created', 'b6' ],
+        [ 'permonth', 'b7' ],
+        [ 'total', 'd7' ],
+      ]
+
+      let request = []
+
+      for (let [_, cell] of mapping) request.push(cell)
+
+      let request_json = JSON.stringify(request)
+
+      let deployment_url = 'https://script.google.com/macros/s/AKfycbwWvgUWiAggh5Hv9uJh-Y_V4XX85ETNLqLh70XSa1qDK4fzT7faQJ07tZVP8qo_v4BU_g/exec'
+
+      let response = JSON.parse(await (await fetch(deployment_url, {
+        method: 'post',
+        body: JSON.stringify(request),
+      })).text())
+
+      let result = {}
+
+      let i = 0
+
+      for (let [name] of mapping) {
+        result[name] = response[i]
+        i++
+      }
+
+      created.innerText = result.created
+      permonth.innerText = result.permonth
+      total.innerText = result.total
+    </script>
+	<div id="page1">	
+		<div id="markup1">
+			<div id="container">
+				<div id="character">
+					<img id="face" src="">
+					<div id="name">
+						Крылов Кирилл Дмитриевич
+					</div>
+					<div id="lightblue1">
+						<div id="hat">
+							Руководитель отдела продаж
+						</div>
+					</div>
+					<div id="description">
+						Описание того, чем пост занимается 	как на сайте
+				</div>
+					<div id="post">
+						<div id="post-text">
+						Руководитель
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="markup2">
+			<div id="container1">
+				<div id="section">
+					Отдел продажи чистовых материалов	
+				</div>
+				<div id="rotations">
+					Обороты отдела	
+				</div>
+				<div id="money">
+					<div id="money1">	
+						<div id="lightblue">
+							<div id="countmoney">
+								12000000
+							</div>
+						</div>
+						<div id="per">
+							за этот месяц
+						</div>
+					</div>
+				</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="company">
+		<div id="company-content">
+			<div id="cbox1">
+				<div id="cbox1-text">
+					Компания ведет
+				</div>
+				<div id="created"></div>
+			</div>
+			<div id="cbox2">
+				<div id="cbox2box">
+					<div id="permonth"></div>
+				</div>
+				<div id="cbox2box2">
+					<div id="cbox2-box">
+						<div id="cbox2-box-blueborder">
+							<div id="cbox2-box-blueborder-text">
+							80
+							</div>
+						</div>
+						<div id="cbox2-box-text">
+							выдано
+						</div>
+					</div>
+					<div id="cbox2-box">
+						<div id="cbox2-box-blueborder">
+							<div id="cbox2-box-blueborder-text">
+							76
+							</div>
+						</div>
+						<div id="cbox2-box-text">
+							завершено
+						</div>
+					</div>						
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div id="page3">
+		
+		<div id="p3b">
+			<div id="character-card">
+				<div id="character-card-data">
+					<img id="character-img" src="img/KKD.png">
+					<div id="character-card-name">Крылов Кирилл Дмитриевич</div>
+					<div id="character-card-blue">Руководитель отдела чистовых материалов</div>
+					<div id="character-card-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt</div>
+				</div>
+				<div id="character-card-button">
+					Руководитель
+				</div>
+			</div>
+			<div id="p3b2">
+				<div id="divison">Отдел 2</div>
+				<div id="sample-box">
+					<div id="p3b2-designs">Заключено дизайнпроектов</div>
+					<div id="p3b2-quantity">96</div>
+					<div id="p3b2-designs-per">за этот год</div>
+				</div>
+				<div id="sample-box">
+					<div id="p3b2-new-quantity">за этот месяц объектов</div>
+					<div id="p3b2-split">
+						<div id="p3b2-concluded">
+							<div id="p3b2-concluded-count">23</div>
+							<div id="p3b2-concluded-text">заключено</div>
+						</div>
+						<div id="p3b2-concluded">
+							<div id="p3b2-concluded-count">15</div>
+							<div id="p3b2-concluded-text">завершено</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div id="page4"></div>
+	<div id="page5"></div>
+
+
+
+
+	
+</body>
+</html>
